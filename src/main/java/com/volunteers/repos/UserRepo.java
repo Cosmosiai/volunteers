@@ -1,8 +1,10 @@
 package com.volunteers.repos;
 
+import com.volunteers.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserRepo {
+public interface UserRepo extends JpaRepository<User, Long> {
 
 }

@@ -2,78 +2,28 @@ package com.volunteers.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.FieldDefaults;
+import com.volunteers.enums.Statuses;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "users")
+
+@Entity(name = "USERS")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(name = "username")
     private String username;
+    @Column(name = "firstName")
     private String firstName;
+    @Column(name = "lastName")
     private String lastName;
+    @Column(name = "reputation")
     private int reputation;
-    private boolean isAdmin;
-    private boolean isInBan;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public int getReputation() {
-        return reputation;
-    }
-
-    public void setReputation(int reputation) {
-        this.reputation = reputation;
-    }
-
-    public boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
-
-    public boolean isInBan() {
-        return isInBan;
-    }
-
-    public void setInBan(boolean inBan) {
-        isInBan = inBan;
-    }
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private Statuses status;
 }

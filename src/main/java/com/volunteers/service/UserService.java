@@ -27,11 +27,11 @@ public class UserService {
     }
 
     public void findUser(String username) {
-        User user = this.userRepo.findUser(username);
+        User user = this.userRepo.findUserByUsername(username);
     }
 
     public void findOrg(String companyName) {
-        Organisation org = this.orgRepo.findOrg(companyName);
+        Organisation org = this.orgRepo.findOrganisationByCompanyName(companyName);
     }
 
 // Other functions

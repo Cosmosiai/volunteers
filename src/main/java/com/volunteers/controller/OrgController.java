@@ -13,15 +13,15 @@ public class OrgController {
     @Autowired
     OrgService orgService;
 
-    @PatchMapping(value = "/find-user")
+    @PatchMapping(value = "/find-org-by-name")
     public void findUser(@RequestParam String username) {
         orgService.findUser(username);
     }
-    @PatchMapping(value = "/hire-user-by-id")
+    @PatchMapping(value = "/hire-org-by-id")
     public void hireUser(@RequestParam Long id) {
         orgService.hireUser(id);
     }
-    @PatchMapping(value = "/evaluate-user-by-id")
+    @PatchMapping(value = "/evaluate-org-by-id")
     public void evaluateUser(@RequestParam Long id) {
         orgService.evaluateUser(id);
     }

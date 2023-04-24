@@ -17,21 +17,10 @@ public class OrgService {
 // -------------------------------------------------- Org functions --------------------------------------------------
 // Find functions
 
-    public void findOrgById(Long id) {
-        Organisation org = this.orgRepo.findOrgById(id);
-    }
-
-    public void findUserById(Long id) {
-        User user = this.userRepo.findUserById(id);
-    }
-
     public void findUser(String username) {
-        User user = this.userRepo.findUser(username);
+        User user = this.userRepo.findUserByUsername(username);
     }
 
-    public void findOrg(String companyName) {
-        Organisation org = this.orgRepo.findOrg(companyName);
-    }
 
 // Other functions
     public void hireUser(Long id) {

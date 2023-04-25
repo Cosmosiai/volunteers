@@ -1,6 +1,7 @@
 package com.volunteers.enums;
 
-public enum Statuses {
+public enum UserS {
+
     ACTIVE,
     BANNED,
     ADMIN,

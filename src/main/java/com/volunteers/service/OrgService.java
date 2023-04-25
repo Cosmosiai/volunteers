@@ -26,7 +26,7 @@ public class OrgService {
     }
 
     public void findUser(String username) {
-        User user = this.userRepo.findUser(username);
+        User user = this.userRepo.findUserByName(username);
     }
 
     public void findOrg(String companyName) {

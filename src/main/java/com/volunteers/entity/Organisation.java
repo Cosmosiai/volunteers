@@ -22,4 +22,6 @@ public class Organisation {
     private String lastName;
     @Column(name = "companyEmail")
     private String email;
+
+
 }

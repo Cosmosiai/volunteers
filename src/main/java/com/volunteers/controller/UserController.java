@@ -1,5 +1,6 @@
 package com.volunteers.controller;
 
+import com.volunteers.entity.User;
 import com.volunteers.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -16,8 +17,8 @@ public class UserController {
 // Find functions
 
     @PatchMapping(value = "/find-user-by-id")
-    public void findUserById(@RequestParam String username) {
-        userService.findUser(username);
+    public User findUserById(@RequestParam Long id) {
+        return userService.findUserById(id);
     }
 
     @PatchMapping(value = "/find-org-by-id")

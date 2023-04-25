@@ -2,7 +2,7 @@ package com.volunteers.service;
 
 import com.volunteers.entity.Organisation;
 import com.volunteers.entity.User;
-import com.volunteers.enums.Statuses;
+import com.volunteers.enums.UserS;
 import com.volunteers.repos.OrgRepo;
 import com.volunteers.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +18,9 @@ public class UserService {
 // -------------------------------------------------- User functions --------------------------------------------------
 // Find functions
 
-    public void findUserById(Long id) {
+    public User findUserById(Long id) {
         User user = this.userRepo.findUserById(id);
+        return user;
     }
 
     public void findOrgById(Long id) {
@@ -27,7 +28,7 @@ public class UserService {
     }
 
     public void findUser(String username) {
-        User user = this.userRepo.findUser(username);
+        User user = this.userRepo.findUserByName(username);
     }
 
     public void findOrg(String companyName) {
@@ -37,9 +38,11 @@ public class UserService {
 // Other functions
 
     public void checkJobs(Long id) {
+
     }
 
     public void applyJob(Long id) {
+
     }
 
     public void save(User user) {
@@ -52,7 +55,7 @@ public class UserService {
     public void banUser(Long id) {
         User user = this.userRepo.findUserById(id);
         if (user != null) {
-            user.setStatus(Statuses.BANNED);
+            user.setStatus(UserS.BANNED);
             userRepo.save(user);
         }
     }
@@ -60,7 +63,7 @@ public class UserService {
     public void activateUser(Long id) {
         User user = this.userRepo.findUserById(id);
         if (user != null) {
-            user.setStatus(Statuses.ACTIVE);
+            user.setStatus(UserS.ACTIVE);
             userRepo.save(user);
         }
     }
@@ -68,7 +71,7 @@ public class UserService {
     public void adminUser(Long id) {
         User user = this.userRepo.findUserById(id);
         if (user != null) {
-            user.setStatus(Statuses.ADMIN);
+            user.setStatus(UserS.ADMIN);
             userRepo.save(user);
         }
     }
@@ -76,7 +79,7 @@ public class UserService {
     public void deleteUser(Long id) {
         User user = this.userRepo.findUserById(id);
         if (user != null) {
-            user.setStatus(Statuses.DELETED);
+            user.setStatus(UserS.DELETED);
             userRepo.save(user);
         }
     }

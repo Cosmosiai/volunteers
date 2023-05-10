@@ -15,7 +15,9 @@ public class JobApplication {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "username")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "username")
+//    @PrimaryKeyJoinColumn
     private User username;
 
     @Column(name = "jobApplicationS")

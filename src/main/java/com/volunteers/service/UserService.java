@@ -19,41 +19,40 @@ public class UserService {
 // Find functions
 
     public User findUserById(Long id) {
-        User user = this.userRepo.findUserById(id);
-        return user;
+        return userRepo.findUserByUserId(id);
     }
 
-    public void findOrgById(Long id) {
-        Organisation org = this.orgRepo.findOrgById(id);
+    public Organisation findOrgById(Long id) {
+        return this.orgRepo.findOrgById(id);
     }
 
-    public void findUser(String username) {
-        User user = this.userRepo.findUserByName(username);
+    public User findUser(String username) {
+        return this.userRepo.findUserByUsername(username);
     }
 
-    public void findOrg(String companyName) {
-        Organisation org = this.orgRepo.findOrg(companyName);
+    public Organisation findOrg(String companyName) {
+        return this.orgRepo.findByCompanyName(companyName);
     }
 
 // Other functions
 
-    public void checkJobs(Long id) {
-
+    public Long checkJobs(Long id) {
+        return id;
     }
 
-    public void applyJob(Long id) {
-
+    public Long applyJob(Long id) {
+        return id;
     }
 
-    public void save(User user) {
-        this.userRepo.save(user);
+    public User save(User user) {
+        return this.userRepo.save(user);
     }
 
 // -------------------------------------------------- Admin functions --------------------------------------------------
 // User status Functions
 
     public void banUser(Long id) {
-        User user = this.userRepo.findUserById(id);
+        User user = this.userRepo.findUserByUserId(id);
         if (user != null) {
             user.setStatus(UserS.BANNED);
             userRepo.save(user);
@@ -61,7 +60,7 @@ public class UserService {
     }
 
     public void activateUser(Long id) {
-        User user = this.userRepo.findUserById(id);
+        User user = this.userRepo.findUserByUserId(id);
         if (user != null) {
             user.setStatus(UserS.ACTIVE);
             userRepo.save(user);
@@ -69,7 +68,7 @@ public class UserService {
     }
 
     public void adminUser(Long id) {
-        User user = this.userRepo.findUserById(id);
+        User user = this.userRepo.findUserByUserId(id);
         if (user != null) {
             user.setStatus(UserS.ADMIN);
             userRepo.save(user);
@@ -77,7 +76,7 @@ public class UserService {
     }
 
     public void deleteUser(Long id) {
-        User user = this.userRepo.findUserById(id);
+        User user = this.userRepo.findUserByUserId(id);
         if (user != null) {
             user.setStatus(UserS.DELETED);
             userRepo.save(user);

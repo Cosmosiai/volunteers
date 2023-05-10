@@ -1,6 +1,8 @@
 package com.volunteers.controller;
 
+import com.volunteers.entity.Organisation;
 import com.volunteers.entity.User;
+import com.volunteers.service.OrgService;
 import com.volunteers.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -12,37 +14,40 @@ public class UserController {
 
     @Autowired
     UserService userService;
+    OrgService orgService;
 
 // -------------------------------------------------- User functions --------------------------------------------------
 // Find functions
 
-    @PatchMapping(value = "/find-user-by-id")
+    @PatchMapping(value = "/user-find-user-by-id")
     public User findUserById(@RequestParam Long id) {
         return userService.findUserById(id);
     }
 
-    @PatchMapping(value = "/find-org-by-id")
-    public void findOrgById(@RequestParam Long id) {
-        userService.findOrgById(id);
+    @PatchMapping(value = "/user-find-org-by-id")
+    public Organisation findOrgById(@RequestParam Long id) {
+        return userService.findOrgById(id);
     }
 
-    @PatchMapping(value = "/find-user")
-    public void findUser(@RequestParam String username) {
-        userService.findUser(username);
+    @PatchMapping(value = "/user-find-user-by-username")
+    public User findUser(@RequestParam String username) {
+        return userService.findUser(username);
     }
 
-    @PatchMapping(value = "/find-org")
-    public void findOrg(@RequestParam String companyName) {
-        userService.findOrg(companyName);
+    @PatchMapping(value = "/user-find-org-by-companyname")
+    public Organisation findOrg(@RequestParam String companyName) {
+        return userService.findOrg(companyName);
     }
 
 // Other functions
 
     @PatchMapping(value = "/check-jobs")
-    public void checkJobs(@RequestParam Long id) {
+    public Long checkJobs(@RequestParam Long id) {
+        return userService.checkJobs(id);
     }
     @PatchMapping(value = "/apply-jobs")
-    public void applyJob(@RequestParam Long id) {
+    public Long applyJob(@RequestParam Long id) {
+        return userService.applyJob(id);
     }
 
 // -------------------------------------------------- Admin functions --------------------------------------------------

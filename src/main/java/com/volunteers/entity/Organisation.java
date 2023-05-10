@@ -16,12 +16,14 @@ public class Organisation {
 
     @Column(name = "companyName")
     private String companyName;
+
     @Column(name = "CEOFirstName")
     private String firstName;
+
     @Column(name = "CEOLastName")
     private String lastName;
+
     @Column(name = "companyEmail")
     private String email;
-
 
 }

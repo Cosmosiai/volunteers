@@ -1,10 +1,13 @@
 package com.volunteers.service;
 
+import com.volunteers.entity.Job;
 import com.volunteers.entity.Organisation;
 import com.volunteers.entity.User;
+import com.volunteers.enums.JobS;
 import com.volunteers.enums.UserS;
 import com.volunteers.repos.OrgRepo;
 import com.volunteers.repos.UserRepo;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,34 +24,59 @@ public class UserService {
     public User findUserById(Long id) {
         return userRepo.findUserByUserId(id);
     }
+    public User findUser(String username) {
+        return this.userRepo.findUserByUsername(username);
+    }
 
     public Organisation findOrgById(Long id) {
         return this.orgRepo.findOrgById(id);
-    }
-
-    public User findUser(String username) {
-        return this.userRepo.findUserByUsername(username);
     }
 
     public Organisation findOrg(String companyName) {
         return this.orgRepo.findByCompanyName(companyName);
     }
 
+    public Job findJobById(Long id) {
+        return this.userRepo.findJobById(id);
+    }
+
+// Job related functions
+
+    public void acceptJob() {
+
+    }
+    public void declineJob() {
+
+    }
+
+    public Job checkJobs() {
+        return this.userRepo.findAllJobs();
+    }
+
+    public void applyJob(@NotNull Job job, User user) {
+        job.getAppliedUsers().add(user);
+    }
+
 // Other functions
-
-    public Long checkJobs(Long id) {
-        return id;
-    }
-
-    public Long applyJob(Long id) {
-        return id;
-    }
 
     public User save(User user) {
         return this.userRepo.save(user);
     }
 
 // -------------------------------------------------- Admin functions --------------------------------------------------
+// Job status changing
+    public void adminActivateJob(@NotNull Job job) {
+        job.setJobStatus(JobS.ACTIVE);
+    }
+
+    public void adminPauseJob(@NotNull Job job) {
+        job.setJobStatus(JobS.SUPERPAUSED);
+    }
+
+    public void adminDeleteJob(@NotNull Job job) {
+        job.setJobStatus(JobS.SUPERDELETED);
+    }
+
 // User status Functions
 
     public void banUser(Long id) {
@@ -82,4 +110,7 @@ public class UserService {
             userRepo.save(user);
         }
     }
+
+
+
 }

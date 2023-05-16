@@ -1,7 +1,8 @@
 package com.volunteers.entity;
-
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -25,5 +26,12 @@ public class Organisation {
 
     @Column(name = "companyEmail")
     private String email;
+
+    @Column(name = "phone")
+    private int phone;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "jobs")
+    private List<Job> jobs;
 
 }

@@ -1,10 +1,12 @@
 package com.volunteers.controller;
 
+import com.volunteers.entity.Job;
 import com.volunteers.entity.Organisation;
 import com.volunteers.entity.User;
 import com.volunteers.service.OrgService;
 import com.volunteers.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,59 +21,82 @@ public class UserController {
 // -------------------------------------------------- User functions --------------------------------------------------
 // Find functions
 
-    @PatchMapping(value = "/user-find-user-by-id")
+    @GetMapping(value = "/user-find-user-by-id")
     public User findUserById(@RequestParam Long id) {
         return userService.findUserById(id);
     }
 
-    @PatchMapping(value = "/user-find-org-by-id")
+    @GetMapping(value = "/user-find-org-by-id")
     public Organisation findOrgById(@RequestParam Long id) {
         return userService.findOrgById(id);
     }
 
-    @PatchMapping(value = "/user-find-user-by-username")
+    @GetMapping(value = "/user-find-user-by-username")
     public User findUser(@RequestParam String username) {
         return userService.findUser(username);
     }
 
-    @PatchMapping(value = "/user-find-org-by-companyname")
+    @GetMapping(value = "/user-find-org-by-companyname")
     public Organisation findOrg(@RequestParam String companyName) {
         return userService.findOrg(companyName);
     }
 
+    @GetMapping(value = "/find-job")
+    public Job findJobById(Long id) {
+        return userService.findJobById(id);
+    }
+
 // Other functions
 
-    @PatchMapping(value = "/check-jobs")
-    public Long checkJobs(@RequestParam Long id) {
-        return userService.checkJobs(id);
+    @GetMapping(value = "/check-jobs")
+    public Job checkJobs() {
+        return userService.checkJobs();
     }
-    @PatchMapping(value = "/apply-jobs")
-    public Long applyJob(@RequestParam Long id) {
-        return userService.applyJob(id);
+
+    @GetMapping(value = "/apply-jobs")
+    public void applyJob(@RequestParam Job job, User user) {
+        userService.applyJob(job, user);
+        System.out.println("Success_message");
     }
 
 // -------------------------------------------------- Admin functions --------------------------------------------------
+// Job status changing
+    @GetMapping(value = "/admin-activate-job")
+    public void adminActivateJob(Job job) {
+        userService.adminActivateJob(job);
+    }
+
+    @GetMapping(value = "/admin-pause-job")
+    public void adminPauseJob(Job job) {
+        userService.adminPauseJob(job);
+    }
+
+    @GetMapping(value = "/admin-delete-job")
+    public void adminDeleteJob(Job job) {
+        userService.adminDeleteJob(job);
+    }
+
 // User status Functions
 
-    @PatchMapping(value = "/ban-user-by-id")
+    @GetMapping(value = "/ban-user-by-id")
     public String ban(@RequestParam Long id) {
         userService.banUser(id);
         return "success";
     }
 
-    @PatchMapping(value = "/activate-user-by-id")
+    @GetMapping(value = "/activate-user-by-id")
     public String activateUser(@RequestParam Long id) {
         userService.activateUser(id);
         return "success";
     }
 
-    @PatchMapping(value = "/admin-user-by-id")
+    @GetMapping(value = "/admin-user-by-id")
     public String adminUser(@RequestParam Long id) {
         userService.adminUser(id);
         return "success";
     }
 
-    @PatchMapping(value = "/delete-user-by-id")
+    @GetMapping(value = "/delete-user-by-id")
     public String deleteUser(@RequestParam Long id) {
         userService.deleteUser(id);
         return "success";

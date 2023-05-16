@@ -20,6 +20,9 @@ public class User {
     @Column(name = "username")
     private String username;
 
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "firstName")
     private String firstName;
 
@@ -29,6 +32,9 @@ public class User {
     @Column(name = "reputation")
     private int reputation;
 
+    @Column(name = "jobsDone")
+    private int jobsDone;
+
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private UserS status;
@@ -36,4 +42,16 @@ public class User {
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "UserTags")
     private List<Tag> tags;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userInvites")
+    private List<Tag> invite;
+
+    public User(String username, String password, String firstname, String lastname, List<Tag> tags) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.tags = tags;
+    }
 }

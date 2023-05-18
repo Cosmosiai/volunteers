@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class UserController {
 
@@ -49,7 +51,7 @@ public class UserController {
 // Other functions
 
     @GetMapping(value = "/check-jobs")
-    public Job checkJobs() {
+    public List<Job> checkJobs() {
         return userService.checkJobs();
     }
 

@@ -31,9 +31,9 @@ public class OrgService {
 
 // Job related
 
-    public void createJob(Long id, String jobName, String jobDescription, String companyName, List<Tag> tag, JobS jobS) {
-        Job job = new Job(id, jobName, jobDescription, companyName, tag, jobS);
-    }
+//    public void createJob(Long id, String jobName, String jobDescription, String companyName, List<Tag> tag, JobS jobS) {
+//        Job job = new Job(id, jobName, jobDescription, companyName, tag, jobS);
+//    }
 
     public void changeJobName(@NotNull Job job, String name) {
         job.setJobName(name);
@@ -43,8 +43,8 @@ public class OrgService {
         job.setJobName(description);
     }
 
-    public void changeJobTags(@NotNull Job job, String tags) {
-        job.setJobName(tags);
+    public void changeJobTags(@NotNull Job job, List<Tag> tags) {
+        job.setReqTags(tags);
     }
 
 // Job status related

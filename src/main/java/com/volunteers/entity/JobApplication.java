@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 
-@Entity(name = "jobApplication")
+@Entity(name = "APPLICATION")
 public class JobApplication {
 
     @Id
@@ -17,7 +17,6 @@ public class JobApplication {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "username")
-//    @PrimaryKeyJoinColumn
     private User username;
 
     @Column(name = "jobApplicationS")

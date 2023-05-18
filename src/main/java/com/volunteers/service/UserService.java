@@ -5,11 +5,14 @@ import com.volunteers.entity.Organisation;
 import com.volunteers.entity.User;
 import com.volunteers.enums.JobS;
 import com.volunteers.enums.UserS;
+import com.volunteers.repos.JobRepo;
 import com.volunteers.repos.OrgRepo;
 import com.volunteers.repos.UserRepo;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service
@@ -17,6 +20,7 @@ public class UserService {
     @Autowired
     private UserRepo userRepo;
     private OrgRepo orgRepo;
+    private JobRepo jobRepo;
 
 // -------------------------------------------------- User functions --------------------------------------------------
 // Find functions
@@ -37,7 +41,7 @@ public class UserService {
     }
 
     public Job findJobById(Long id) {
-        return this.userRepo.findJobById(id);
+        return this.jobRepo.findJobById(id);
     }
 
 // Job related functions
@@ -49,8 +53,8 @@ public class UserService {
 
     }
 
-    public Job checkJobs() {
-        return this.userRepo.findAllJobs();
+    public List<Job> checkJobs() {
+        return this.jobRepo.findAll();
     }
 
     public void applyJob(@NotNull Job job, User user) {

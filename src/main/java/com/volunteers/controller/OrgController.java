@@ -36,10 +36,10 @@ public class OrgController {
 
 // Job related
 
-    @GetMapping(value = "/create-job")
-    public void createJob(Long id, String jobName, String jobDescription, String companyName, List<Tag> tag, JobS jobS) {
-        orgService.createJob(id, jobName, jobDescription, companyName, tag, jobS);
-    }
+//    @GetMapping(value = "/create-job")
+//    public void createJob(Long id, String jobName, String jobDescription, String companyName, List<Tag> tag, JobS jobS) {
+//        orgService.createJob(id, jobName, jobDescription, companyName, tag, jobS);
+//    }
 
     @GetMapping(value = "/change-job-name")
     public void changeJobName(Job job, String name) {
@@ -52,7 +52,7 @@ public class OrgController {
     }
 
     @GetMapping(value = "/change-job-tags")
-    public void changeJobTags(Job job, String tags) {
+    public void changeJobTags(Job job, List<Tag> tags) {
         orgService.changeJobTags(job, tags);
     }
 

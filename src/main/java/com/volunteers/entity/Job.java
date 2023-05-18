@@ -24,7 +24,7 @@ public class Job {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "companyName")
-    private String companyName;
+    private Organisation companyName;
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "reqTags")
@@ -45,12 +45,12 @@ public class Job {
     @Enumerated(EnumType.STRING)
     private JobS jobStatus = JobS.ACTIVE;
 
-    public Job(long id, String jobName, String jobDescription, String companyName, List<Tag> reqTags, JobS jobStatus) {
-        this.id = id;
-        this.jobName = jobName;
-        this.jobDescription = jobDescription;
-        this.companyName = companyName;
-        this.reqTags = reqTags;
-        this.jobStatus = jobStatus;
-    }
+//    public Job(long id, String jobName, String jobDescription, String companyName, List<Tag> reqTags, JobS jobStatus) {
+//        this.id = id;
+//        this.jobName = jobName;
+//        this.jobDescription = jobDescription;
+//        this.companyName = companyName;
+//        this.reqTags = reqTags;
+//        this.jobStatus = jobStatus;
+//    }
 }
